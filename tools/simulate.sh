@@ -11,7 +11,7 @@ for i in $(seq 1 40); do
   c1=${CMDS[RANDOM % ${#CMDS[@]}]}
   c2=${CMDS[RANDOM % ${#CMDS[@]}]}
   sshpass -p "$p" ssh -p $PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
-    -o ConnectTimeout=5 "$u@$HOST" "$c1; $c2; exit" >/dev/null 2>&1
+    -o ConnectTimeout=5 -o PubkeyAuthentication=no -o PubkeyAuthentication=no -o PubkeyAuthentication=no "$u@$HOST" "$c1; $c2; exit" >/dev/null 2>&1
   sleep $((RANDOM % 3))
 done
 echo "Done."
